@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAFO - Home</title>
     <style>
-        /* Custom Font Setup */
         @font-face {
             font-family: 'I Am The Crayon Master';
-            src: url('/IAmTheCrayonMaster.ttf.ttf'); 
+            src: url('IAmTheCrayonMaster.ttf') format('truetype');
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            background-color: #83B79C; /* The specific RGB green */
+            background-color: #83B79C;
             font-family: 'I Am The Crayon Master', 'Comic Sans MS', cursive;
             margin: 0;
             padding: 20px;
@@ -25,71 +28,111 @@
         h1 {
             background-color: #e6ccff;
             width: 100%;
-            max-width: 800px;
+            max-width: 1400px;
             text-align: center;
-            padding: 15px 0;
-            border-radius: 12px;
-            margin-bottom: 5px;
+            padding: 20px 0;
+            border-radius: 18px;
+            margin: 0 0 30px 0;
+            font-size: 3rem;
         }
 
-        .subtitle {
-            font-style: italic;
-            margin-bottom: 30px;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-
-        /* Gallery Layout (Photo 2 Setup) */
         .gallery {
             display: flex;
-            gap: 20px;
             justify-content: center;
+            align-items: flex-start;
+            gap: 50px;
             flex-wrap: wrap;
-            max-width: 900px;
-            margin-bottom: 40px;
+            width: 100%;
+            max-width: 1200px;
         }
 
         .char-container {
-            width: 280px;
+            width: 320px;
             text-align: center;
             cursor: pointer;
             padding: 10px;
         }
 
-        .icon-img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            /* No spin animation here */
+        .image-frame {
+            width: 320px;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
         }
 
-        /* Dropdown Reference Logic */
+        .icon-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .char-name {
+            margin-top: 18px;
+            font-size: 2rem;
+        }
+
         .ref-content {
             display: none;
-            margin-top: 15px;
+            margin-top: 20px;
             width: 100%;
-            padding-top: 10px;
+        }
+
+        .ref-content.show {
+            display: block;
+        }
+
+        .ref-frame {
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
         .ref-content img {
             width: 100%;
-            border-radius: 8px;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .show { 
-            display: block; 
+            max-width: 320px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
         }
 
         .credit {
             margin-top: 50px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             background: #e6ccff;
-            padding: 10px 30px;
+            padding: 12px 28px;
             border-radius: 30px;
             font-weight: bold;
+            text-align: center;
         }
 
+        @media (max-width: 700px) {
+            h1 {
+                font-size: 2.2rem;
+                padding: 16px 0;
+            }
+
+            .char-container {
+                width: 90vw;
+                max-width: 320px;
+            }
+
+            .image-frame {
+                width: 90vw;
+                max-width: 320px;
+                height: 90vw;
+                max-height: 320px;
+            }
+
+            .char-name {
+                font-size: 1.7rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -97,36 +140,45 @@
     <h1>FAFO</h1>
 
     <div class="gallery">
-        
         <div class="char-container" onclick="toggleRef('aspen-ref')">
-            <img src="/artwork/AspenICON.png" alt="Aspen" class="icon-img">
-            <p>Aspen</p>
+            <div class="image-frame">
+                <img src="artwork/AspenICON.png" alt="Aspen" class="icon-img">
+            </div>
+            <p class="char-name">Aspen</p>
             <div id="aspen-ref" class="ref-content">
-                <img src="/artwork/AspenREF.png" alt="Aspen Reference">
+                <div class="ref-frame">
+                    <img src="artwork/AspenREF.png" alt="Aspen Reference">
+                </div>
             </div>
         </div>
 
         <div class="char-container" onclick="toggleRef('lou-ref')">
-            <img src="/artwork/lou.png" alt="Lou" class="icon-img">
-            <p>Lou</p>
+            <div class="image-frame">
+                <img src="artwork/lou.png" alt="Lou" class="icon-img">
+            </div>
+            <p class="char-name">Lou</p>
             <div id="lou-ref" class="ref-content">
-                <img src="" alt="Lou Reference">
+                <div class="ref-frame">
+                    <img src="artwork/LouREF.png" alt="Lou Reference">
+                </div>
             </div>
         </div>
-
     </div>
 
     <div class="credit">Art by Mixicola</div>
 
     <script>
-        // Toggle Logic: Clicking shows info, clicking again hides it
         function toggleRef(id) {
-            const ref = document.getElementById(id);
-            if (ref.style.display === "block") {
-                ref.style.display = "none";
-            } else {
-                ref.style.display = "block";
-            }
+            const clickedRef = document.getElementById(id);
+            const allRefs = document.querySelectorAll('.ref-content');
+
+            allRefs.forEach(ref => {
+                if (ref !== clickedRef) {
+                    ref.classList.remove('show');
+                }
+            });
+
+            clickedRef.classList.toggle('show');
         }
     </script>
 
