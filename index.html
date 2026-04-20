@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAFO - Home</title>
+    <style>
+        /* Custom Font Setup */
+        @font-face {
+            font-family: 'I Am The Crayon Master';
+            src: url('/IAmTheCrayonMaster.ttf.ttf'); 
+        }
+
+        body {
+            background-color: #83B79C; /* The specific RGB green */
+            font-family: 'I Am The Crayon Master', 'Comic Sans MS', cursive;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            background-color: #e6ccff;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            padding: 15px 0;
+            border-radius: 12px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-style: italic;
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        /* Gallery Layout (Photo 2 Setup) */
+        .gallery {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin-bottom: 40px;
+        }
+
+        .char-container {
+            width: 280px;
+            text-align: center;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .icon-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            /* No spin animation here */
+        }
+
+        /* Dropdown Reference Logic */
+        .ref-content {
+            display: none;
+            margin-top: 15px;
+            width: 100%;
+            padding-top: 10px;
+        }
+
+        .ref-content img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .show { 
+            display: block; 
+        }
+
+        .credit {
+            margin-top: 50px;
+            font-size: 1.1rem;
+            background: #e6ccff;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>FAFO</h1>
+
+    <div class="gallery">
+        
+        <div class="char-container" onclick="toggleRef('aspen-ref')">
+            <img src="/artwork/AspenICON.png" alt="Aspen" class="icon-img">
+            <p>Aspen</p>
+            <div id="aspen-ref" class="ref-content">
+                <img src="/artwork/AspenREF.png" alt="Aspen Reference">
+            </div>
+        </div>
+
+        <div class="char-container" onclick="toggleRef('lou-ref')">
+            <img src="/artwork/lou.png" alt="Lou" class="icon-img">
+            <p>Lou</p>
+            <div id="lou-ref" class="ref-content">
+                <img src="" alt="Lou Reference">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="credit">Art by Mixicola</div>
+
+    <script>
+        // Toggle Logic: Clicking shows info, clicking again hides it
+        function toggleRef(id) {
+            const ref = document.getElementById(id);
+            if (ref.style.display === "block") {
+                ref.style.display = "none";
+            } else {
+                ref.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
