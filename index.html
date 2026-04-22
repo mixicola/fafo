@@ -6,9 +6,8 @@
     <title>FAFO - Home</title>
     <style>
         @font-face {
-            font-family: 'IAmACrayonMaster';
-            src: url('fonts/IAmACrayonMaster.ttf') format('truetype'),
-                 url('fonts/IAmACrayonMaster.woff2') format('woff2');
+            font-family: 'IAmTheCrayonMaster';
+            src: url('IAmTheCrayonMaster.ttf') format('truetype');
         }
 
         * {
@@ -18,13 +17,25 @@
         }
 
         body {
-            background-color: #83B79C;
-            font-family: 'IAmACrayonMaster', 'Comic Sans MS', cursive;
-            color: #2e4a3a;
+            background-color: #8eb6a0;
+            font-family: 'IAmTheCrayonMaster', 'Comic Sans MS', cursive;
+            color: white;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 10px;
+        }
+
+        .site-wrapper {
+            background-color: #7ca894;
+            width: 100%;
+            max-width: 1300px;
+            min-height: calc(100vh - 20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 6px;
         }
 
         /* ── Top nav ── */
@@ -33,10 +44,11 @@
             text-align: center;
             padding: 10px 0 8px;
             font-size: 0.95rem;
-            color: #2e4a3a;
+            color: white;
+            font-family: 'IAmTheCrayonMaster', 'Comic Sans MS', cursive;
         }
         .nav-bar a {
-            color: #2e4a3a;
+            color: white;
             text-decoration: none;
         }
         .nav-bar a:hover { text-decoration: underline; }
@@ -53,7 +65,7 @@
             margin-bottom: 4px;
         }
         .title-banner h1 {
-            font-family: 'IAmACrayonMaster', 'Comic Sans MS', cursive;
+            font-family: 'IAmTheCrayonMaster', 'Comic Sans MS', cursive;
             font-size: 2.4rem;
             color: #f5f5f5;
             font-weight: normal;
@@ -63,13 +75,13 @@
         /* ── Page label + tagline ── */
         .page-label {
             font-size: 0.78rem;
-            color: #2e4a3a;
+            color: white;
             text-align: center;
             margin-top: 4px;
         }
         .tagline {
             font-size: 0.9rem;
-            color: #2e4a3a;
+            color: white;
             text-align: center;
             margin-top: 2px;
             margin-bottom: 20px;
@@ -80,7 +92,7 @@
             text-align: center;
             font-size: 1.08rem;
             line-height: 1.75;
-            color: #2e4a3a;
+            color: white;
             max-width: 400px;
             padding: 0 20px;
             margin-bottom: 30px;
@@ -109,7 +121,7 @@
 
         .char-name {
             font-size: 1.2rem;
-            color: #2e4a3a;
+            color: white;
             margin-bottom: 10px;
             text-align: center;
         }
@@ -146,9 +158,9 @@
             justify-content: center;
             text-align: center;
             padding: 10px;
-            font-family: 'IAmACrayonMaster', cursive;
+            font-family: 'IAmTheCrayonMaster', cursive;
             font-size: 1rem;
-            color: #2e4a3a;
+            color: white;
             line-height: 1.4;
         }
 
@@ -179,10 +191,10 @@
             text-align: center;
             padding: 8px 0 20px;
             font-size: 0.9rem;
-            color: #2e4a3a;
+            color: white;
         }
         .mid-nav a {
-            color: #2e4a3a;
+            color: white;
             text-decoration: none;
         }
         .mid-nav a:hover { text-decoration: underline; }
@@ -197,7 +209,7 @@
             padding: 12px 24px 22px;
             margin-top: auto;
             font-size: 1rem;
-            color: #2e4a3a;
+            color: white;
         }
         .bottom-right {
             text-align: right;
@@ -206,7 +218,7 @@
             align-items: flex-end;
         }
         .bottom-right a {
-            color: #2e4a3a;
+            color: white;
             text-decoration: none;
             display: block;
             line-height: 1.5;
@@ -228,6 +240,7 @@
     </style>
 </head>
 <body>
+<div class="site-wrapper">
 
     <!-- Top nav -->
     <nav class="nav-bar">
@@ -279,19 +292,12 @@
 
     </div>
 
-    <!-- Mid nav -->
-    <nav class="mid-nav">
-        <a href="cast">cast</a><span class="sep">-</span>
-        <a href="read">start reading</a><span class="sep">-</span>
-        <a href="gallery">gallery</a>
-    </nav>
+
 
     <!-- Bottom bar -->
     <div class="bottom-bar">
         <div class="bottom-left">
             Special thanks to<br>Cal &amp; Axo
-        </div>
-        <div class="bottom-right">
         </div>
     </div>
 
@@ -305,5 +311,6 @@
         }
     </script>
 
+</div><!-- end site-wrapper -->
 </body>
 </html>
