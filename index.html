@@ -6,179 +6,302 @@
     <title>FAFO - Home</title>
     <style>
         @font-face {
-            font-family: 'I Am The Crayon Master';
-            src: url('IAmTheCrayonMaster.ttf') format('truetype');
+            font-family: 'IAmACrayonMaster';
+            src: url('fonts/IAmACrayonMaster.ttf') format('truetype'),
+                 url('fonts/IAmACrayonMaster.woff2') format('woff2');
         }
 
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
             background-color: #83B79C;
-            font-family: 'I Am The Crayon Master', 'Comic Sans MS', cursive;
-            margin: 0;
-            padding: 20px;
-            color: #333;
+            font-family: 'IAmACrayonMaster', 'Comic Sans MS', cursive;
+            color: #2e4a3a;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        h1 {
-            background-color: #e6ccff;
+        /* ── Top nav ── */
+        .nav-bar {
             width: 100%;
-            max-width: 1400px;
             text-align: center;
-            padding: 20px 0;
-            border-radius: 18px;
-            margin: 0 0 30px 0;
-            font-size: 3rem;
+            padding: 10px 0 8px;
+            font-size: 0.95rem;
+            color: #2e4a3a;
+        }
+        .nav-bar a {
+            color: #2e4a3a;
+            text-decoration: none;
+        }
+        .nav-bar a:hover { text-decoration: underline; }
+        .nav-bar .sep { margin: 0 6px; }
+
+        /* ── Title banner ── */
+        .title-banner {
+            background-color: #5a8a72;
+            width: 80%;
+            max-width: 480px;
+            text-align: center;
+            padding: 10px 0 8px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+        }
+        .title-banner h1 {
+            font-family: 'IAmACrayonMaster', 'Comic Sans MS', cursive;
+            font-size: 2.4rem;
+            color: #f5f5f5;
+            font-weight: normal;
+            letter-spacing: 4px;
         }
 
+        /* ── Page label + tagline ── */
+        .page-label {
+            font-size: 0.78rem;
+            color: #2e4a3a;
+            text-align: center;
+            margin-top: 4px;
+        }
+        .tagline {
+            font-size: 0.9rem;
+            color: #2e4a3a;
+            text-align: center;
+            margin-top: 2px;
+            margin-bottom: 20px;
+        }
+
+        /* ── Description ── */
+        .description {
+            text-align: center;
+            font-size: 1.08rem;
+            line-height: 1.75;
+            color: #2e4a3a;
+            max-width: 400px;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+
+        /* ── Character gallery ── */
         .gallery {
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            gap: 50px;
+            gap: 52px;
             flex-wrap: wrap;
             width: 100%;
-            max-width: 1200px;
+            max-width: 680px;
+            padding: 0 20px;
+            margin-bottom: 24px;
         }
 
         .char-container {
-            width: 320px;
-            text-align: center;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .image-frame {
-            width: 320px;
-            height: 320px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-        }
-
-        .icon-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-            border-radius: 10px;
+            cursor: pointer;
+            width: 170px;
         }
 
         .char-name {
-            margin-top: 18px;
-            font-size: 2rem;
-        }
-
-        .ref-content {
-            display: none;
-            margin-top: 20px;
-            width: 100%;
-        }
-
-        .ref-content.show {
-            display: block;
-        }
-
-        .ref-frame {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .ref-content img {
-            width: 100%;
-            max-width: 320px;
-            height: auto;
-            object-fit: contain;
-            display: block;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-        }
-
-        .credit {
-            margin-top: 50px;
             font-size: 1.2rem;
-            background: #e6ccff;
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-weight: bold;
+            color: #2e4a3a;
+            margin-bottom: 10px;
             text-align: center;
         }
 
-        @media (max-width: 700px) {
-            h1 {
-                font-size: 2.2rem;
-                padding: 16px 0;
-            }
+        .image-frame {
+            width: 155px;
+            height: 155px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #6aa88a;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
 
-            .char-container {
-                width: 90vw;
-                max-width: 320px;
-            }
+        .icon-img {
+            width: 155px;
+            height: 155px;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            flex-shrink: 0;
+        }
 
-            .image-frame {
-                width: 90vw;
-                max-width: 320px;
-                height: 90vw;
-                max-height: 320px;
-            }
+        /* Lou placeholder */
+        .placeholder-box {
+            width: 155px;
+            height: 155px;
+            background-color: #6aa88a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            font-family: 'IAmACrayonMaster', cursive;
+            font-size: 1rem;
+            color: #2e4a3a;
+            line-height: 1.4;
+        }
 
-            .char-name {
-                font-size: 1.7rem;
-            }
+        /* ── Ref dropdown ── */
+        .ref-content {
+            display: none;
+            margin-top: 14px;
+            width: 100%;
+        }
+        .ref-content.show {
+            display: block;
+            animation: slideDown 0.2s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .ref-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+        }
+
+        /* ── Mid nav ── */
+        .mid-nav {
+            width: 100%;
+            text-align: center;
+            padding: 8px 0 20px;
+            font-size: 0.9rem;
+            color: #2e4a3a;
+        }
+        .mid-nav a {
+            color: #2e4a3a;
+            text-decoration: none;
+        }
+        .mid-nav a:hover { text-decoration: underline; }
+        .mid-nav .sep { margin: 0 6px; }
+
+        /* ── Bottom bar ── */
+        .bottom-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 12px 24px 22px;
+            margin-top: auto;
+            font-size: 1rem;
+            color: #2e4a3a;
+        }
+        .bottom-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .bottom-right a {
+            color: #2e4a3a;
+            text-decoration: none;
+            display: block;
+            line-height: 1.5;
+        }
+        .bottom-right a:hover { text-decoration: underline; }
+        .bottom-arrow {
+            font-size: 1.5rem;
+            margin-top: 4px;
+            line-height: 1;
+        }
+
+        @media (max-width: 600px) {
+            .gallery { gap: 28px; }
+            .char-container { width: 130px; }
+            .image-frame, .placeholder-box { width: 120px; height: 120px; }
+            .bottom-bar { flex-direction: column; gap: 12px; align-items: flex-start; }
+            .bottom-right { text-align: left; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
 
-    <h1>FAFO</h1>
+    <!-- Top nav -->
+    <nav class="nav-bar">
+        cast<span class="sep">-</span>start reading<span class="sep">-</span>gallery
+    </nav>
 
+    <!-- Title banner -->
+    <div class="title-banner">
+        <h1>FAFO</h1>
+    </div>
+
+    <!-- Page label + tagline -->
+    <p class="page-label">homepage</p>
+    <p class="tagline">"An expression of warning or schadenfreude."</p>
+
+    <!-- Description -->
+    <p class="description">
+        A slice of life comic following the lives<br>
+        of Aspen Archer and Lou Fairhounde<br>
+        as they try to navigate their<br>
+        transition<br>
+        into adulthood.
+    </p>
+
+    <!-- Character gallery -->
     <div class="gallery">
+
+        <!-- Aspen -->
         <div class="char-container" onclick="toggleRef('aspen-ref')">
+            <p class="char-name">Aspen</p>
             <div class="image-frame">
                 <img src="artwork/AspenICON.png" alt="Aspen" class="icon-img">
             </div>
-            <p class="char-name">Aspen</p>
             <div id="aspen-ref" class="ref-content">
-                <div class="ref-frame">
-                    <img src="artwork/AspenREF.png" alt="Aspen Reference">
-                </div>
+                <img src="artwork/AspenREF.png" alt="Aspen Reference">
             </div>
         </div>
 
+        <!-- Lou -->
         <div class="char-container" onclick="toggleRef('lou-ref')">
+            <p class="char-name">Lou</p>
             <div class="image-frame">
                 <img src="artwork/lou.png" alt="Lou" class="icon-img">
             </div>
-            <p class="char-name">Lou</p>
             <div id="lou-ref" class="ref-content">
-                <div class="ref-frame">
-                    <img src="artwork/LouREF.png" alt="Lou Reference">
-                </div>
+                <img src="artwork/LouREF.png" alt="Lou Reference">
             </div>
+        </div>
+
+    </div>
+
+    <!-- Mid nav -->
+    <nav class="mid-nav">
+        <a href="cast">cast</a><span class="sep">-</span>
+        <a href="read">start reading</a><span class="sep">-</span>
+        <a href="gallery">gallery</a>
+    </nav>
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+        <div class="bottom-left">
+            Special thanks to<br>Cal &amp; Axo
+        </div>
+        <div class="bottom-right">
         </div>
     </div>
 
-    <div class="credit">Art by Mixicola</div>
-
     <script>
         function toggleRef(id) {
-            const clickedRef = document.getElementById(id);
-            const allRefs = document.querySelectorAll('.ref-content');
-
-            allRefs.forEach(ref => {
-                if (ref !== clickedRef) {
-                    ref.classList.remove('show');
-                }
+            const clicked = document.getElementById(id);
+            document.querySelectorAll('.ref-content').forEach(ref => {
+                if (ref !== clicked) ref.classList.remove('show');
             });
-
-            clickedRef.classList.toggle('show');
+            clicked.classList.toggle('show');
         }
     </script>
 
